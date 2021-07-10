@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/a5a3635c3a.js" crossorigin="anonymous"></script>
+    <style>
+        .container{
+            position: relative;
+            width: 60vh;
+            height: 90vh;
+            /* border: 1px solid black; */
+            margin: auto;
+            background-image: linear-gradient(to top, rgb(59, 120, 233) , rgb(180, 203, 224));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        .icn1{
+            position: absolute;
+            font-size: 20vh;
+            color: rgb(204, 204, 204)
+            
+           
+        }
+        input{
+            position: absolute;
+            top: 60px;
+            height: 25px;
+            border-radius:10px ;
+            outline: none;
+            border: none;
+            padding: 0px 10px;
+        }
+        .showdata{
+            position: absolute;
+            /* border: 1px solid black; */
+            width: 40%;
+            height: 50px;
+            top: 60vh;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <i class="fas fa-smog icn1"></i>
+    <input type="text" placeholder="search by city name" name="" id="" >
+    <div class="showdata">
+    
+    </div>
+</div>
+
+    <!-- <input type="text" placeholder="Enter City">
+
+    <button onclick="fetchData()">Click ME</button>
+    
+
+    <div class="dataShow"></div> -->
+    
+</body>
+<script>
+// var inp = document.querySelector("input")
+// fetch(`https://api.openweathermap.org/data/2.5/weather?q= ${inp.value} &appid=19e8a473867b966fe7ac7cd262706eb5`)
+// .then(res=>res.json())
+// .then(data=>{
+//     console.log(data);
+//     showfetch(data)
+// })
+// function showfetch(d){
+//     var a=document.getElementsByClassName('showdata')[0]
+// a.innerText = 'name:' + d.name + ""+ 'Temp:' + d.main.temp
+// }
+
+var inp=document.querySelector('input')
+// inp.addEventListener('keypress',(event)=>{
+//     if(event.keyCode==13){
+// console.log(inp.value)
+
+//     }
+// })
+//function get data fetch
+
+inp.addEventListener('keypress',(event)=>{
+    if(event.keyCode==13){
+    getdata()
+}
+})
+
+function getdata(){
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inp.value}&appid=a550a697a68fb91d8a80b58244a6ef3a&units=metric`)
+    .then(res=>res.json())
+    .then(data=>{
+        showfetch(data)
+    })
+}
+//show data
+function showfetch(d){
+    var a=document.getElementsByClassName('showdata')[0]
+    a.innerText = 'City_Name:' + d.name  + '\n'+ 'Temperature:' + d.main.temp + "\n"+ 'Feels like:' + d.main.feels_like
+
+}
+
+</script>
+
+
+</html>
+
+
+
